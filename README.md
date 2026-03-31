@@ -1,261 +1,225 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-  <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <title>Novura Packaging</title>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Novura Packaging | Manufacturing Future</title>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
+    
+    <style>
+        :root {
+            --primary: #22c55e; /* Frisches Grün */
+            --bg: #020617;      /* Tiefes Dunkelblau/Schwarz */
+            --card-bg: rgba(30, 41, 59, 0.4);
+            --border: rgba(255, 255, 255, 0.08);
+            --text-main: #f8fafc;
+            --text-dim: #94a3b8;
+        }
 
-  <!-- Google Font -->
-  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600;700&display=swap" rel="stylesheet">
+        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
 
-  <style>
-    * {
-      box-sizing: border-box;
-      margin: 0;
-      padding: 0;
-      scroll-behavior: smooth;
-    }
+        body {
+            font-family: 'Plus Jakarta Sans', sans-serif;
+            background-color: var(--bg);
+            color: var(--text-main);
+            line-height: 1.6;
+            overflow-x: hidden;
+        }
 
-    body {
-      font-family: 'Inter', sans-serif;
-      background: #0f172a;
-      color: #e2e8f0;
-      line-height: 1.6;
-    }
+        /* --- Dekoration im Hintergrund --- */
+        .glow {
+            position: fixed;
+            top: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 100%;
+            height: 100%;
+            background: radial-gradient(circle at 50% -20%, rgba(34, 197, 94, 0.15), transparent 70%);
+            z-index: -1;
+        }
 
-    header {
-      background: radial-gradient(circle at top, #22c55e, #020617);
-      padding: 100px 20px;
-      text-align: center;
-    }
+        /* --- Hero Bereich --- */
+        header {
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            padding: 20px;
+        }
 
-    header h1 {
-      font-size: 3rem;
-      font-weight: 700;
-      margin-bottom: 15px;
-    }
+        .tag {
+            background: rgba(34, 197, 94, 0.1);
+            color: var(--primary);
+            padding: 6px 16px;
+            border-radius: 100px;
+            font-size: 0.8rem;
+            font-weight: 700;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            border: 1px solid rgba(34, 197, 94, 0.2);
+            margin-bottom: 20px;
+        }
 
-    header p {
-      max-width: 600px;
-      margin: 0 auto 20px;
-      opacity: 0.85;
-    }
+        h1 {
+            font-size: clamp(3rem, 10vw, 6rem);
+            font-weight: 800;
+            line-height: 1;
+            margin-bottom: 25px;
+            background: linear-gradient(to bottom, #fff 40%, #64748b);
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+        }
 
-    .btn {
-      display: inline-block;
-      background: #22c55e;
-      color: #020617;
-      padding: 12px 24px;
-      border-radius: 10px;
-      text-decoration: none;
-      font-weight: 600;
-      transition: 0.3s;
-    }
+        .hero-desc {
+            max-width: 600px;
+            font-size: 1.2rem;
+            color: var(--text-dim);
+            margin-bottom: 40px;
+        }
 
-    .btn:hover {
-      background: #16a34a;
-      transform: translateY(-2px);
-    }
+        /* --- Bento Grid --- */
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px 100px;
+        }
 
-    nav {
-      position: sticky;
-      top: 0;
-      background: rgba(2, 6, 23, 0.8);
-      backdrop-filter: blur(10px);
-      padding: 15px;
-      text-align: center;
-      border-bottom: 1px solid rgba(255,255,255,0.05);
-    }
+        .bento-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            grid-auto-rows: minmax(180px, auto);
+            gap: 20px;
+        }
 
-    nav a {
-      color: #cbd5f5;
-      margin: 0 15px;
-      text-decoration: none;
-      font-weight: 500;
-      transition: 0.2s;
-    }
+        .bento-card {
+            background: var(--card-bg);
+            border: 1px solid var(--border);
+            border-radius: 28px;
+            padding: 30px;
+            backdrop-filter: blur(10px);
+            transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+        }
 
-    nav a:hover {
-      color: #22c55e;
-    }
+        .bento-card:hover {
+            border-color: var(--primary);
+            transform: translateY(-5px);
+            background: rgba(30, 41, 59, 0.6);
+        }
 
-    section {
-      max-width: 1100px;
-      margin: 60px auto;
-      padding: 0 20px;
-    }
+        /* Verschiedene Kachelgrößen */
+        .large { grid-column: span 2; grid-row: span 2; }
+        .wide { grid-column: span 2; }
+        .tall { grid-row: span 2; }
 
-    h2 {
-      margin-bottom: 20px;
-      font-size: 2rem;
-      color: #22c55e;
-    }
+        .bento-card h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+            color: var(--primary);
+        }
 
-    .cards {
-      display: grid;
-      grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
-      gap: 25px;
-      margin-top: 25px;
-    }
+        .bento-card p {
+            color: var(--text-dim);
+            font-size: 0.95rem;
+        }
 
-    .card {
-      background: rgba(255,255,255,0.03);
-      padding: 25px;
-      border-radius: 16px;
-      backdrop-filter: blur(8px);
-      border: 1px solid rgba(255,255,255,0.05);
-      transition: 0.3s;
-    }
+        .icon {
+            font-size: 2rem;
+            margin-bottom: auto;
+            opacity: 0.8;
+        }
 
-    .card:hover {
-      transform: translateY(-6px);
-      border-color: #22c55e;
-    }
+        /* --- Buttons --- */
+        .btn {
+            background: var(--primary);
+            color: #000;
+            padding: 14px 30px;
+            border-radius: 14px;
+            text-decoration: none;
+            font-weight: 700;
+            transition: 0.3s;
+        }
 
-    .card h3 {
-      margin-bottom: 10px;
-    }
+        .btn:hover {
+            box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
+            transform: scale(1.02);
+        }
 
-    .highlight {
-      background: rgba(34,197,94,0.1);
-      border-left: 4px solid #22c55e;
-      padding: 18px;
-      border-radius: 10px;
-      margin-top: 20px;
-    }
+        footer {
+            text-align: center;
+            padding: 60px 20px;
+            border-top: 1px solid var(--border);
+            font-size: 0.9rem;
+            color: var(--text-dim);
+        }
 
-    .team {
-      display: flex;
-      flex-wrap: wrap;
-      gap: 25px;
-    }
+        @media (max-width: 900px) {
+            .bento-grid { grid-template-columns: repeat(2, 1fr); }
+        }
 
-    .team-member {
-      flex: 1;
-      min-width: 220px;
-      background: rgba(255,255,255,0.03);
-      padding: 25px;
-      border-radius: 16px;
-      transition: 0.3s;
-    }
-
-    .team-member:hover {
-      transform: translateY(-5px);
-    }
-
-    footer {
-      background: #020617;
-      text-align: center;
-      padding: 30px;
-      margin-top: 60px;
-      font-size: 0.9rem;
-      opacity: 0.7;
-    }
-  </style>
+        @media (max-width: 600px) {
+            .bento-grid { grid-template-columns: 1fr; }
+            .large, .wide, .tall { grid-column: span 1; grid-row: span 1; }
+        }
+    </style>
 </head>
-
 <body>
 
+<div class="glow"></div>
+
 <header>
-  <h1>Novura Packaging</h1>
-  <p>Innovative nachhaltige Verpackungen aus PHA</p>
-  <p>
-    Wir sind Jacob Niehus und Luis Tann und entwickeln umweltfreundliche
-    Alternativen zu Plastik – mit Fokus auf echte Anwendungen.
-  </p>
-  <a class="btn" href="#kontakt">Kontakt</a>
+    <div class="tag">Novura Packaging</div>
+    <h1>Echt nachhaltig.<br>Echt produziert.</h1>
+    <p class="hero-desc">Wir beenden die Ära der Plastikverpackungen. Mit PHA stellen wir Produkte her, die dort verschwinden, wo sie nicht hingehören: in der Natur.</p>
+    <a href="#kontakt" class="btn">Kontakt aufnehmen</a>
 </header>
 
-<nav>
-  <a href="#idee">Idee</a>
-  <a href="#pha">PHA</a>
-  <a href="#prototyp">Prototyp</a>
-  <a href="#team">Team</a>
-  <a href="#kontakt">Kontakt</a>
-</nav>
+<div class="container">
+    <div class="bento-grid">
+        <!-- Main Card -->
+        <div class="bento-card large">
+            <div class="icon">🏭</div>
+            <h3>Unsere Fertigung</h3>
+            <p>Wir entwickeln keine Konzepte für andere – wir produzieren selbst. In unserer Werkstatt entstehen Prototypen, die zeigen, dass PHA der Kunststoff der Zukunft ist.</p>
+        </div>
 
-<section id="idee">
-  <h2>Unsere Idee</h2>
-  <p>
-    Wir entwickeln nachhaltige Verpackungslösungen auf Basis von PHA.
-    Ziel ist es, funktionale und umweltfreundliche Alternativen zu herkömmlichem Plastik zu schaffen.
-  </p>
+        <!-- Material Card -->
+        <div class="bento-card tall">
+            <div class="icon">🔬</div>
+            <h3>PHA Material</h3>
+            <p>Ein Biopolymer, das zu 100% biologisch abbaubar ist. Es verhält sich wie Plastik, ist aber keins.</p>
+        </div>
 
-  <div class="highlight">
-    Fokus: reale Anwendungen – z. B. Verpackungen für Angelzubehör als erster Prototyp.
-  </div>
-</section>
+        <!-- Pilot Card -->
+        <div class="bento-card">
+            <div class="icon">🎣</div>
+            <h3>Pilot: Angelzubehör</h3>
+            <p>Spezialverpackungen für die Fischerei – dort, wo Umweltschutz am wichtigsten ist.</p>
+        </div>
 
-<section id="pha">
-  <h2>Warum PHA?</h2>
+        <!-- Team Card -->
+        <div class="bento-card wide">
+            <div class="icon">👥</div>
+            <h3>Das Team</h3>
+            <p>Jacob Niehus (Technik) & Luis Tann (Design). Gemeinsam bringen wir Novura Packaging vom Gymnasium Kronshagen in die reale Anwendung.</p>
+        </div>
 
-  <div class="cards">
-    <div class="card">
-      <h3>Biobasiert</h3>
-      <p>PHA ist ein biologisch erzeugter Kunststoff.</p>
+        <!-- Eco Card -->
+        <div class="bento-card">
+            <div class="icon">🌊</div>
+            <h3>Meeresfest</h3>
+            <p>Zersetzt sich rückstandslos in Salzwasser.</p>
+        </div>
     </div>
+</div>
 
-    <div class="card">
-      <h3>Umweltfreundlicher</h3>
-      <p>Reduziert langfristig Mikroplastikbelastung.</p>
-    </div>
-
-    <div class="card">
-      <h3>Zukunftstechnologie</h3>
-      <p>Großes Potenzial für nachhaltige Verpackungen.</p>
-    </div>
-  </div>
-</section>
-
-<section id="prototyp">
-  <h2>Prototyp</h2>
-
-  <div class="cards">
-    <div class="card">
-      <h3>1. Analyse</h3>
-      <p>Material und Einsatzmöglichkeiten untersuchen.</p>
-    </div>
-
-    <div class="card">
-      <h3>2. Design</h3>
-      <p>Verpackung konzipieren und entwickeln.</p>
-    </div>
-
-    <div class="card">
-      <h3>3. Umsetzung</h3>
-      <p>Prototyp erstellen und präsentieren.</p>
-    </div>
-  </div>
-</section>
-
-<section id="team">
-  <h2>Team</h2>
-
-  <div class="team">
-    <div class="team-member">
-      <h3>Jacob Niehus</h3>
-      <p>Konzept, Entwicklung & Umsetzung</p>
-    </div>
-
-    <div class="team-member">
-      <h3>Luis Tann</h3>
-      <p>Design, Ideen & Präsentation</p>
-    </div>
-  </div>
-</section>
-
-<section id="kontakt">
-  <h2>Kontakt</h2>
-
-  <div class="highlight">
-    E-Mail: deine-mail@beispiel.de<br>
-    Schule: Gymnasium Kronshagen<br>
-    Projekt: Profilseminar
-  </div>
-</section>
-
-<footer>
-  <p>© 2026 Novura Packaging</p>
+<footer id="kontakt">
+    <p>Novura Packaging | Profilseminar 2026 | Gymnasium Kronshagen</p>
+    <p style="margin-top: 10px;">E-Mail: deine-mail@beispiel.de</p>
 </footer>
 
 </body>
