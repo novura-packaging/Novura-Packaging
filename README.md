@@ -1,225 +1,237 @@
 <!DOCTYPE html>
 <html lang="de">
 <head>
-    <meta charset="UTF-8" />
-    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    <title>Novura Packaging | Manufacturing Future</title>
-    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;600;800&display=swap" rel="stylesheet">
-    
-    <style>
-        :root {
-            --primary: #22c55e; /* Frisches Grün */
-            --bg: #020617;      /* Tiefes Dunkelblau/Schwarz */
-            --card-bg: rgba(30, 41, 59, 0.4);
-            --border: rgba(255, 255, 255, 0.08);
-            --text-main: #f8fafc;
-            --text-dim: #94a3b8;
-        }
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Paging – Nachhaltige Verpackungslösungen</title>
 
-        * { box-sizing: border-box; margin: 0; padding: 0; scroll-behavior: smooth; }
+  <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;600&display=swap" rel="stylesheet">
 
-        body {
-            font-family: 'Plus Jakarta Sans', sans-serif;
-            background-color: var(--bg);
-            color: var(--text-main);
-            line-height: 1.6;
-            overflow-x: hidden;
-        }
+  <style>
+    * { margin:0; padding:0; box-sizing:border-box; }
 
-        /* --- Dekoration im Hintergrund --- */
-        .glow {
-            position: fixed;
-            top: 0;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 100%;
-            height: 100%;
-            background: radial-gradient(circle at 50% -20%, rgba(34, 197, 94, 0.15), transparent 70%);
-            z-index: -1;
-        }
+    body {
+      font-family: 'Inter', sans-serif;
+      background:#ffffff;
+      color:#1a1a1a;
+      line-height:1.6;
+    }
 
-        /* --- Hero Bereich --- */
-        header {
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            text-align: center;
-            padding: 20px;
-        }
+    header {
+      border-bottom:1px solid #e5e5e5;
+      padding:20px 40px;
+      display:flex;
+      justify-content:space-between;
+      align-items:center;
+    }
 
-        .tag {
-            background: rgba(34, 197, 94, 0.1);
-            color: var(--primary);
-            padding: 6px 16px;
-            border-radius: 100px;
-            font-size: 0.8rem;
-            font-weight: 700;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            border: 1px solid rgba(34, 197, 94, 0.2);
-            margin-bottom: 20px;
-        }
+    header h1 {
+      font-size:1.5rem;
+      font-weight:600;
+    }
 
-        h1 {
-            font-size: clamp(3rem, 10vw, 6rem);
-            font-weight: 800;
-            line-height: 1;
-            margin-bottom: 25px;
-            background: linear-gradient(to bottom, #fff 40%, #64748b);
-            -webkit-background-clip: text;
-            -webkit-text-fill-color: transparent;
-        }
+    nav a {
+      margin-left:25px;
+      text-decoration:none;
+      color:#333;
+      font-size:0.95rem;
+    }
 
-        .hero-desc {
-            max-width: 600px;
-            font-size: 1.2rem;
-            color: var(--text-dim);
-            margin-bottom: 40px;
-        }
+    nav a:hover { color:#2f7d32; }
 
-        /* --- Bento Grid --- */
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 20px 100px;
-        }
+    .hero {
+      padding:100px 40px;
+      max-width:1100px;
+      margin:auto;
+    }
 
-        .bento-grid {
-            display: grid;
-            grid-template-columns: repeat(4, 1fr);
-            grid-auto-rows: minmax(180px, auto);
-            gap: 20px;
-        }
+    .hero h2 {
+      font-size:2.5rem;
+      margin-bottom:20px;
+      font-weight:600;
+    }
 
-        .bento-card {
-            background: var(--card-bg);
-            border: 1px solid var(--border);
-            border-radius: 28px;
-            padding: 30px;
-            backdrop-filter: blur(10px);
-            transition: 0.4s cubic-bezier(0.23, 1, 0.32, 1);
-            display: flex;
-            flex-direction: column;
-            justify-content: flex-end;
-        }
+    .hero p {
+      max-width:600px;
+      color:#555;
+      margin-bottom:30px;
+    }
 
-        .bento-card:hover {
-            border-color: var(--primary);
-            transform: translateY(-5px);
-            background: rgba(30, 41, 59, 0.6);
-        }
+    .btn {
+      background:#2f7d32;
+      color:white;
+      padding:12px 20px;
+      text-decoration:none;
+      border-radius:6px;
+      font-size:0.9rem;
+    }
 
-        /* Verschiedene Kachelgrößen */
-        .large { grid-column: span 2; grid-row: span 2; }
-        .wide { grid-column: span 2; }
-        .tall { grid-row: span 2; }
+    section {
+      max-width:1100px;
+      margin:80px auto;
+      padding:0 40px;
+    }
 
-        .bento-card h3 {
-            font-size: 1.5rem;
-            margin-bottom: 10px;
-            color: var(--primary);
-        }
+    h3 {
+      font-size:1.8rem;
+      margin-bottom:20px;
+      font-weight:600;
+    }
 
-        .bento-card p {
-            color: var(--text-dim);
-            font-size: 0.95rem;
-        }
+    .grid {
+      display:grid;
+      grid-template-columns:repeat(auto-fit,minmax(260px,1fr));
+      gap:30px;
+    }
 
-        .icon {
-            font-size: 2rem;
-            margin-bottom: auto;
-            opacity: 0.8;
-        }
+    .box {
+      border:1px solid #e5e5e5;
+      padding:25px;
+      border-radius:8px;
+    }
 
-        /* --- Buttons --- */
-        .btn {
-            background: var(--primary);
-            color: #000;
-            padding: 14px 30px;
-            border-radius: 14px;
-            text-decoration: none;
-            font-weight: 700;
-            transition: 0.3s;
-        }
+    .box h4 {
+      margin-bottom:10px;
+      font-size:1.1rem;
+    }
 
-        .btn:hover {
-            box-shadow: 0 0 20px rgba(34, 197, 94, 0.4);
-            transform: scale(1.02);
-        }
+    .box p {
+      color:#555;
+      font-size:0.95rem;
+    }
 
-        footer {
-            text-align: center;
-            padding: 60px 20px;
-            border-top: 1px solid var(--border);
-            font-size: 0.9rem;
-            color: var(--text-dim);
-        }
+    .team {
+      display:flex;
+      gap:30px;
+      flex-wrap:wrap;
+    }
 
-        @media (max-width: 900px) {
-            .bento-grid { grid-template-columns: repeat(2, 1fr); }
-        }
+    .member {
+      flex:1;
+      min-width:220px;
+      border:1px solid #e5e5e5;
+      padding:20px;
+      border-radius:8px;
+    }
 
-        @media (max-width: 600px) {
-            .bento-grid { grid-template-columns: 1fr; }
-            .large, .wide, .tall { grid-column: span 1; grid-row: span 1; }
-        }
-    </style>
+    footer {
+      border-top:1px solid #e5e5e5;
+      padding:40px;
+      text-align:center;
+      font-size:0.85rem;
+      color:#777;
+    }
+
+    @media(max-width:600px){
+      header { flex-direction:column; gap:10px; }
+      nav a { margin:0 10px; }
+    }
+
+  </style>
 </head>
+
 <body>
 
-<div class="glow"></div>
-
 <header>
-    <div class="tag">Novura Packaging</div>
-    <h1>Echt nachhaltig.<br>Echt produziert.</h1>
-    <p class="hero-desc">Wir beenden die Ära der Plastikverpackungen. Mit PHA stellen wir Produkte her, die dort verschwinden, wo sie nicht hingehören: in der Natur.</p>
-    <a href="#kontakt" class="btn">Kontakt aufnehmen</a>
+  <h1>Paging</h1>
+  <nav>
+    <a href="#leistungen">Leistungen</a>
+    <a href="#material">Material</a>
+    <a href="#anwendungen">Anwendungen</a>
+    <a href="#unternehmen">Unternehmen</a>
+    <a href="#kontakt">Kontakt</a>
+  </nav>
 </header>
 
-<div class="container">
-    <div class="bento-grid">
-        <!-- Main Card -->
-        <div class="bento-card large">
-            <div class="icon">🏭</div>
-            <h3>Unsere Fertigung</h3>
-            <p>Wir entwickeln keine Konzepte für andere – wir produzieren selbst. In unserer Werkstatt entstehen Prototypen, die zeigen, dass PHA der Kunststoff der Zukunft ist.</p>
-        </div>
+<section class="hero">
+  <h2>Nachhaltige Verpackungslösungen für vielfältige Anwendungen</h2>
+  <p>
+    Paging entwickelt und produziert umweltfreundliche Verpackungen auf Basis von PHA.
+    Unsere Lösungen sind darauf ausgelegt, konventionelle Kunststoffe zu ersetzen und
+    nachhaltige Alternativen für unterschiedliche Einsatzbereiche bereitzustellen.
+  </p>
+  <a class="btn" href="#kontakt">Kontakt aufnehmen</a>
+</section>
 
-        <!-- Material Card -->
-        <div class="bento-card tall">
-            <div class="icon">🔬</div>
-            <h3>PHA Material</h3>
-            <p>Ein Biopolymer, das zu 100% biologisch abbaubar ist. Es verhält sich wie Plastik, ist aber keins.</p>
-        </div>
-
-        <!-- Pilot Card -->
-        <div class="bento-card">
-            <div class="icon">🎣</div>
-            <h3>Pilot: Angelzubehör</h3>
-            <p>Spezialverpackungen für die Fischerei – dort, wo Umweltschutz am wichtigsten ist.</p>
-        </div>
-
-        <!-- Team Card -->
-        <div class="bento-card wide">
-            <div class="icon">👥</div>
-            <h3>Das Team</h3>
-            <p>Jacob Niehus (Technik) & Luis Tann (Design). Gemeinsam bringen wir Novura Packaging vom Gymnasium Kronshagen in die reale Anwendung.</p>
-        </div>
-
-        <!-- Eco Card -->
-        <div class="bento-card">
-            <div class="icon">🌊</div>
-            <h3>Meeresfest</h3>
-            <p>Zersetzt sich rückstandslos in Salzwasser.</p>
-        </div>
+<section id="leistungen">
+  <h3>Leistungen</h3>
+  <div class="grid">
+    <div class="box">
+      <h4>Entwicklung</h4>
+      <p>Konzeption und Gestaltung nachhaltiger Verpackungslösungen.</p>
     </div>
-</div>
+    <div class="box">
+      <h4>Produktion</h4>
+      <p>Herstellung von Verpackungen auf Basis moderner Biokunststoffe.</p>
+    </div>
+    <div class="box">
+      <h4>Anpassung</h4>
+      <p>Individuelle Lösungen für verschiedene Produkte und Branchen.</p>
+    </div>
+  </div>
+</section>
 
-<footer id="kontakt">
-    <p>Novura Packaging | Profilseminar 2026 | Gymnasium Kronshagen</p>
-    <p style="margin-top: 10px;">E-Mail: deine-mail@beispiel.de</p>
+<section id="material">
+  <h3>Material: PHA</h3>
+  <p>
+    Polyhydroxyalkanoate (PHA) sind biobasierte Kunststoffe, die als nachhaltige
+    Alternative zu herkömmlichen Materialien eingesetzt werden können.
+    Sie bieten Potenzial zur Reduzierung von Umweltbelastungen und unterstützen
+    langfristig ressourcenschonende Verpackungssysteme.
+  </p>
+</section>
+
+<section id="anwendungen">
+  <h3>Anwendungen</h3>
+  <div class="grid">
+    <div class="box">
+      <h4>Konsumgüter</h4>
+      <p>Verpackungen für alltägliche Produkte.</p>
+    </div>
+    <div class="box">
+      <h4>Technische Anwendungen</h4>
+      <p>Schutzverpackungen für spezialisierte Produkte.</p>
+    </div>
+    <div class="box">
+      <h4>Sonderlösungen</h4>
+      <p>Individuell entwickelte Verpackungskonzepte.</p>
+    </div>
+  </div>
+</section>
+
+<section id="unternehmen">
+  <h3>Unternehmen</h3>
+  <p>
+    Paging ist ein Projekt mit dem Ziel, nachhaltige Verpackungen praktisch umzusetzen
+    und weiterzuentwickeln. Der Fokus liegt auf realen Anwendungen und der kontinuierlichen
+    Verbesserung von Material und Design.
+  </p>
+
+  <div class="team">
+    <div class="member">
+      <h4>Jacob Niehus</h4>
+      <p>Entwicklung und Umsetzung</p>
+    </div>
+    <div class="member">
+      <h4>Luis Tan</h4>
+      <p>Design und Konzeption</p>
+    </div>
+  </div>
+</section>
+
+<section id="kontakt">
+  <h3>Kontakt</h3>
+  <p>
+    Für Anfragen oder weitere Informationen kontaktieren Sie uns bitte per E-Mail.
+  </p>
+  <p>
+    Jacob_Hugo.Niehus@gmx.de<br>
+    luis.tan@outlook.com
+  </p>
+</section>
+
+<footer>
+  <p>© 2026 Paging – Nachhaltige Verpackungslösungen</p>
 </footer>
 
 </body>
