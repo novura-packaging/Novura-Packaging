@@ -146,7 +146,7 @@
 <section class="hero">
   <h2>Nachhaltige Verpackungslösungen für vielfältige Anwendungen</h2>
   <p>
-    Paging entwickelt und produziert umweltfreundliche Verpackungen auf Basis von PHA.
+    Wir als Novura entwickeln und produziert umweltfreundliche Verpackungen auf Basis von PHA.
     Unsere Lösungen sind darauf ausgelegt, konventionelle Kunststoffe zu ersetzen und
     nachhaltige Alternativen für unterschiedliche Einsatzbereiche bereitzustellen.
   </p>
@@ -202,7 +202,7 @@
 <section id="unternehmen">
   <h3>Unternehmen</h3>
   <p>
-    Paging ist ein Projekt mit dem Ziel, nachhaltige Verpackungen praktisch umzusetzen
+    Novura ist ein Projekt mit dem Ziel, nachhaltige Verpackungen praktisch umzusetzen
     und weiterzuentwickeln. Der Fokus liegt auf realen Anwendungen und der kontinuierlichen
     Verbesserung von Material und Design.
   </p>
