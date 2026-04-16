@@ -133,7 +133,7 @@
 <body>
 
 <header>
-  <h1>Paging</h1>
+  <h1>Novura</h1>
   <nav>
     <a href="#leistungen">Leistungen</a>
     <a href="#material">Material</a>
